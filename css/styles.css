@@ -1,0 +1,1040 @@
+body {
+	/*background: #FFFFFF;*/
+	margin: 0px;
+	min-width: 1075px;
+	/*background-image: url('/img/bg_img.jpg');*/
+	/*background-repeat: no-repeat;*/
+	background-image: linear-gradient(to right bottom, #ffffff, #d8d5da, #b6abb3, #96838b, #785d62, #664a4d, #553839, #432725, #3b2220, #341c1b, #2c1716, #251210);
+}
+/*fundo grande*/
+#bg_big{
+	position: fixed;
+	right: 0px;
+	top:0px;
+	height: 100vh;
+	width: 50vw;
+	z-index: -100;
+	background-image: url('img/monopoly-man.png');
+	background-repeat: no-repeat;
+	pointer-events: none;
+	opacity: .2;
+}
+
+/*show/hide flexbox*/
+
+div.showFlex{
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: stretch;
+}
+
+/*pannel effects*/
+/*generic background1*/
+#setup, #board, .enlarge, #control{
+background: rgb(255,255,255);
+background: -moz-linear-gradient(-45deg,  rgba(255,255,255,1) 0%, rgba(255,243,229,1) 100%);
+background: -webkit-linear-gradient(-45deg,  rgba(255,255,255,1) 0%,rgba(255,243,229,1) 100%);
+background: linear-gradient(135deg,  rgba(255,255,255,1) 0%,rgba(255,243,229,1) 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#fff3e5',GradientType=1 );
+
+}
+
+/*generic shadows*/
+#board, .enlarge, #setup, #control{
+	-webkit-box-shadow: 1px 1px 5px 0 rgba(0,0,0,.3);
+	box-shadow: 1px 1px 5px 0 rgba(0,0,0,.3);
+}
+/*end pannel effects*/
+
+td {
+	font-size: 12px;
+	font-family: arial, sans-serif;
+	border: 1px solid black;
+	text-align: center;
+}
+
+#setup {
+	display: none;
+	margin: 15px;
+	width: 40vw;
+	position: absolute;
+    padding: 1rem;
+    border-radius: 4px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.player-input{
+	display: flex;
+	justify-content: space-between;
+}
+
+#moneybar {
+	float: right;
+	border: 0px solid black;
+	background-color: white;
+	margin: 15px;
+	border-radius: 5px;
+	display: none;
+	z-index: 14;
+	position: relative;
+	cursor: default;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+#moneybar table {
+	font-weight: bold;
+	border-spacing: 1px;
+}
+
+#moneybarwrap {
+	position: absolute;
+	min-width: 135px;
+	top: 0px;
+	right: 0px;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+#propertystats {
+	margin-right: 110px;
+}
+
+#refresh {
+	display: none;
+	margin: 15px;
+}
+
+#noF5 {
+	display: none;
+}
+
+#noscript {
+	margin-left: 10px;
+}
+
+#board {
+	display: none;
+	/*border: 2px solid black;
+	border: solid 9px black;*/
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-65%, -50%);
+
+	border-radius: 19px;
+    overflow: hidden;
+
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,f1f1f1+50,e1e1e1+51,f6f6f6+100;White+Gloss+%231 */
+background: rgb(255,255,255); /* Old browsers */
+background: -moz-linear-gradient(-45deg,  rgba(255,255,255,1) 0%, rgba(241,241,241,1) 50%, rgba(225,225,225,1) 51%, rgba(246,246,246,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  rgba(255,255,255,1) 0%,rgba(241,241,241,1) 50%,rgba(225,225,225,1) 51%,rgba(246,246,246,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  rgba(255,255,255,1) 0%,rgba(241,241,241,1) 50%,rgba(225,225,225,1) 51%,rgba(246,246,246,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+    
+	
+	
+	/*border-spacing: 3px;
+	margin: 25px;
+	float: left;*/
+}
+
+#board:before{
+	content: "";
+    position: absolute;
+    left: -2px;
+    top: -2px;
+    width: calc(100% + 3px);
+    height: calc(100% + 4px);
+    background-color: rgba(255,0,0,.02);
+    border-radius: 22px;
+    border: solid 6px #34495E;
+    pointer-events: none;
+    z-index: 2;
+
+}
+
+#board:after{
+	content: "";
+    background-image: url('img/board_bg.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 50%;
+    height: 50%;
+    z-index: 68;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    position: absolute;
+	pointer-events: none;
+}
+
+#jail {
+	border: 1px solid black;
+	height: 65px;
+	width: 65px;
+	position: relative;
+	top: 73px;
+	left: -73px;
+	z-index: 2;
+}
+
+
+#control {
+	position: absolute;
+    z-index: 9;
+    bottom: 4vh;
+    right: 1rem;
+    /* left: 250px; */
+    padding: 10px;
+    display: none;
+	border-radius: 5px;
+}
+
+#quickstats {
+	font-size: 12px;
+	font-weight: bold;
+	font-family: arial, sans-serif;
+	border: 2px solid blue;
+	margin: 5px;
+	padding: 3px;
+	width: 80px;
+}
+
+#pname {
+	background-color: white;
+}
+
+#landed {
+	padding: 3px;
+	border: 1px solid gray;
+	border-top: none;
+	width: 302px;
+
+	margin: 0px;
+	text-align: center;
+}
+
+#alert {
+	width: 307px;
+	height: 92px;
+	margin: 0px;
+	padding-left: 1px;
+	border: 1px solid gray;
+	font-family: Consolas, "Courier New", monospace;
+	font-size: 13px;
+	background-color: #FFFFFF;
+	overflow-y: scroll;
+}
+
+#manage {
+	width: 308px;
+	border: 1px solid gray;
+	display: none;
+}
+
+#option {
+	border-bottom: 1px solid gray;
+	background-color: white;
+	display: none;
+	background: white;
+	vertical-align: middle;
+	padding: 3px;
+	text-align: center;
+	min-height: 26px;
+}
+
+#buildings {
+	margin: auto;
+	height: 21px;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+#buildings .house {
+	width: 25px;
+	height: 19px;
+	vertical-align: top;
+	float: none;
+}
+
+#buildings .hotel {
+	width: 26px;
+	height: 19px;
+	vertical-align: top;
+	float: none;
+}
+
+#owned {
+	padding: 3px 0px;
+	background-color: white;
+	text-align: center;
+	max-height: 390px;
+	overflow-y: auto;
+}
+
+#owned .propertycellname {
+	vertical-align: top;
+}
+
+#property {
+	margin-right: 1px;
+	background: white;
+}
+
+#trade {
+	border: 2px solid black;
+	display: none;
+	width: 630px;
+	margin: 15px auto;
+	background-color: white;
+	border-radius: 8px;
+	padding: 2px;
+	z-index: 14;
+}
+
+#trade-leftp-name {
+	font-size: 13px;
+	font-weight: bold;
+}
+
+#trade-leftp-name option {
+	font-size: 13px;
+	font-weight: normal;
+}
+
+#trade-rightp-name {
+	font-size: 13px;
+	font-weight: bold;
+}
+
+#trade-rightp-name option {
+	font-size: 13px;
+	font-weight: normal;
+}
+
+#trade-leftp-money {
+	width: 90%;
+}
+
+#trade-rightp-money {
+	width: 90%;
+}
+
+#deedcolor {
+	background: white;
+	width: 100%;
+	height: 48px;
+}
+
+#deedname {
+	margin-top: 10px;
+	font-weight: bold;
+	font-size: 20px;
+	background-color: white;
+}
+
+#menu {
+	/*width: 290px;
+	height: 32px;
+	margin: 0px 10px;*/
+}
+
+#menutable {
+	padding: 0px;
+	text-align: left;
+	font-family: arial, sans-serif;
+	color: white;
+	font-weight: bold;
+	width: 100%;
+	margin: 0px;
+	background-color: #305BC9;
+	overflow: hidden;
+}
+
+#menutable td {
+	vertical-align: top;
+}
+
+#menu a {
+	color: #FFFFFF;
+	text-decoration: none;
+	display: block;
+	height: 100%;
+	width: 100%;
+	padding-top: 8px;
+}
+
+#buy-menu-item {
+	color: #FFFFFF;
+	margin-left: 2px;
+	border-left: none;
+}
+
+#trade-menu-item {
+	color: #AAAAAA;
+	border-right: none;
+	margin-right: 2px;
+}
+
+
+#popup {
+	width: 300px;
+	min-width: 300px;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	padding: 10px;
+	text-align: center;
+	word-wrap: break-word;
+	line-height: 1.5;
+	border: 2px solid black;
+	border-radius: 10px;
+	background-color: white;
+	display: block;
+	z-index: 13;
+	margin: auto;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+#popupwrap {
+	position: absolute;
+	top: 255px;
+	left: 0px;
+	width: 100%;
+	display: none;
+	background-color: transparent;
+	z-index: 13;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+#popuptext {
+	overflow-x: auto;
+}
+
+/* #popupclose {
+	display: none;
+	position: absolute;
+	top: -24px;
+	right: -25px;
+	width: 30px;
+	height: 30px;
+	border: none;
+	cursor: pointer;
+	overflow: visible;
+	z-index: 12;
+} */
+
+#popupclose input {
+	margin: 0px;
+	background-color: red;
+	height: 18px;
+	width: 18px;
+	padding: 0px;
+}
+
+#popupbackground {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	background-color: #000000;
+	opacity: 0.5;
+	display: none;
+	z-index: 10;
+}
+
+#popupdrag {
+	width: 100%;
+	height: 16px;
+	position: absolute;
+	top: -16px;
+	cursor: move;
+}
+
+#stats {
+	max-width: 914px;
+	min-width: 454px;
+	font-family: Arial, sans-serif;
+	font-size: 14px;
+	padding: 10px;
+	text-align: center;
+	word-wrap: break-word;
+	line-height: 1.5;
+	border: 2px solid black;
+	border-radius: 10px;
+	background-color: white;
+	display: block;
+	z-index: 17;
+	margin: auto;
+	position: relative;
+	top: 0px;
+	left: 0px;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+#statswrap {
+	position: absolute;
+	top: 250px;
+	left: 0px;
+	width: 100%;
+	display: none;
+	background-color: transparent;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+#statstext {
+	overflow: hidden;
+	min-height: 70px;
+}
+
+#statsclose {
+	display: block;
+	position: absolute;
+	top: -24px;
+	right: -25px;
+	width: 30px;
+	height: 30px;
+	border: none;
+	cursor: pointer;
+	overflow: visible;
+	z-index: 17;
+}
+
+#statsbackground {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	top: 0px;
+	left: 0px;
+	background-color: #000000;
+	opacity: .5;
+	display: none;
+	z-index: 16;
+}
+
+#statsdrag {
+	width: 100%;
+	height: 16px;
+	position: absolute;
+	top: -16px;
+	cursor: move;
+}
+
+#deed {
+	display: none;
+	position: fixed;
+	border: 2px solid black;
+	width: 235px;
+	height: 275px;
+	background-color: white;
+	z-index: 18;
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+#deed td{
+	border: none;
+}
+
+#deed-header {
+	width: 215px;
+	height: 48px;
+	border: 1px solid black;
+	margin: 9px;
+	background-color: yellow;
+	text-align: center;
+	text-transform: uppercase;
+	font-family: Calibri, Arial;
+}
+
+#deed-name {
+	font-size: 15px;
+	font-weight: bold;
+
+}
+
+#deed-table {
+	margin: 9px;
+	width: 217px;
+	border-spacing: 1px;
+}
+
+#deed-mortgaged {
+	font-family: Calibri, Arial;
+	font-size: 16px;
+	text-align: center;
+
+}
+
+#deed-mortgaged-name {
+	font-size: 18px;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin: 30px 20px 20px;
+}
+
+#deed-special {
+	font-family: Calibri, Arial;
+	text-align: justify;
+}
+
+#deed-special-name {
+	text-align: center;
+	font-size: 18px;
+	font-weight: bold;
+	border-style: solid;
+	border-width: 2px 0px;
+	text-transform: uppercase;
+	margin: 50px 20px 20px;
+}
+
+#deed-special-text {
+	margin: 20px;
+	font-size: 15px;
+}
+
+#deed-special-footer {
+	margin: 0px 20px;
+	width: 195px;
+	position: absolute;
+	bottom: 20px;
+	font-size: 16px;
+}
+
+#enlarge-wrap {
+	border: none;
+	z-index: 0;
+}
+
+
+
+.menu-item {
+	padding: 0px;
+	border-collapse: collapse;
+	border: none;
+	width: 90px;
+	max-width: 90px;
+	overflow: hidden;
+}
+
+.die {
+	display: none;
+	margin: 5px;
+	float: left;
+}
+
+.die-no-img {
+
+
+	border-radius: 6px;
+	font-weight: bold;
+	border: 2px solid black;
+	padding: 5px 10px;
+}
+.house {
+	width: 25px;
+	height: 19px;
+	vertical-align: middle;
+	float: right;
+}
+
+.hotel {
+	width: 26px;
+	height: 19px;
+	vertical-align: middle;
+	float: right;
+}
+
+.cell {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	padding: 0px;
+	vertical-align: bottom;
+	background-repeat: no-repeat;
+	background-size: auto 40px;
+}
+
+/*Destaque da célula ao selecionar*/
+.cell[style="border: 1px solid yellow;"]:not(.board-corner):before,
+.cell[style="border: 1px solid aqua;"]:not(.board-corner):before,
+.cell[style="border: 1px solid blue;"]:not(.board-corner):before,
+.cell[style="border: 1px solid fuchsia;"]:not(.board-corner):before,
+.cell[style="border: 1px solid gray;"]:not(.board-corner):before,
+.cell[style="border: 1px solid green;"]:not(.board-corner):before,
+.cell[style="border: 1px solid lime;"]:not(.board-corner):before,
+.cell[style="border: 1px solid maroon;"]:not(.board-corner):before,
+.cell[style="border: 1px solid navy;"]:not(.board-corner):before,
+.cell[style="border: 1px solid olive;"]:not(.board-corner):before,
+.cell[style="border: 1px solid orange;"]:not(.board-corner):before,
+.cell[style="border: 1px solid purple;"]:not(.board-corner):before,
+.cell[style="border: 1px solid red;"]:not(.board-corner):before,
+.cell[style="border: 1px solid silver;"]:not(.board-corner):before,
+.cell[style="border: 1px solid teal;"]:not(.board-corner):before{
+	content: "";
+    height: 100%;
+    width: 100%;
+    border-color: inherit;
+    border-width: 7px;
+    border-style: solid;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+	opacity: .4;
+    z-index: 10;
+}
+
+/*Position-holder célula 0*/
+#cell0positionholder{
+	display: flex;
+
+}
+
+#cell0positionholder .cell-position{
+	position: relative;
+}
+
+
+
+
+
+.board-center {
+	/*width: 675px;*/
+	border: none;
+	vertical-align: bottom;
+	background-repeat: no-repeat;
+	background-size: auto 40px;
+}
+
+.board-corner {
+	width: calc((100vh / 15)*2);
+    height: calc((100vh / 15)*2);
+	/*width: 102px;
+	height: 102px;*/
+}
+
+.board-top, .board-bottom {
+	width: calc(100vh /15);
+	height: 102px;
+	/*width: 72px;
+	height: 102px;*/
+}
+
+.board-left, .board-right {
+	height: calc(100vh /15);
+	width: 102px;
+	/*width: 102px;
+	height: 72px;*/
+}
+
+.enlarge {
+	width: calc(100vh / 4.5);
+	height: calc(100vh / 3.2);
+	display: none;
+	border: 1px solid #34495E;
+	border-radius: 5px;
+	overflow: hidden;
+	text-align: center;
+	font-size: 12px;
+	position: fixed;
+	z-index: 15;
+
+}
+
+.enlarge-color {
+	background: white;
+	width: 100%;
+	height: 40px;
+	border-bottom: solid 1px rgba(255, 255, 255, .8);
+
+	-webkit-box-shadow: 0 1px 10px 0 rgba(0,0,0,.5);
+	box-shadow: 0 1px 10px 0 rgba(0,0,0,.5);
+}
+
+.enlarge-color:after{
+	content: "";
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#000000+0,000000+100&0.18+0,0+100 */
+background: -moz-linear-gradient(-45deg,  rgba(0,0,0,0.18) 0%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(-45deg,  rgba(0,0,0,0.18) 0%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(135deg,  rgba(0,0,0,0.18) 0%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+
+}
+
+.enlarge-name {
+	font-weight: bold;
+	font-size: 1rem;
+	height: 45px;
+}
+
+.enlarge-price {
+	vertical-align: bottom;
+	height: 25px;
+}
+
+.enlarge-token {
+	height: 45px;
+	width: 100%;
+}
+
+.enlarge-token img{
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.moneybarcell {
+	width: 83px;
+	min-width: 83px;
+}
+
+.moneybararrowcell {
+	background: white;
+	width: 30px;
+	border: none;
+	text-align: right;
+	padding: 0px;
+}
+
+.money-bar-arrow {
+	height: 30px;
+	width: 30px;
+}
+.propertycellcheckbox {
+	width: 20px;
+	height: 20px;
+	border: none;
+	vertical-align: middle;
+}
+
+.propertycellcolor {
+	padding: 0px;
+	width: 20px;
+	height: 20px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: white;
+}
+
+.propertycellname {
+	height: 20px;
+	width: 250px;
+	border: none;
+	cursor: default;
+	text-align: left;
+	vertical-align: middle;
+}
+
+.propertycelldeed {
+	width: 18px;
+	height: 20px;
+	border: 1px solid grey;
+	cursor: pointer;
+	display: none;
+}
+
+.statscellcolor {
+	padding: 0px;
+	width: 22px;
+	height: 20px;
+	border: none;
+}
+
+.statscellname {
+	height: 20px;
+	border: none;
+	cursor: default;
+	text-align: left;
+	min-width: 172px;
+}
+
+.statsplayername {
+	font-weight: bold;
+	font-size: 24px;
+}
+
+.statscell {
+	border: 2px solid black;
+	padding: 8px;
+	vertical-align: top;
+	width: 202px;
+	min-width: 115px;
+}
+
+.trade-cell {
+	border: none;
+	border-radius: 3px;
+	width: 308px;
+	height: 26px;
+	vertical-align: middle;
+}
+
+.cell-anchor {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	bottom: 0px;
+	left: 0px;
+}
+
+.cell-anchor:hover{
+	background-color: rgba(200, 200, 255, .7);
+}
+
+.board-right .cell-anchor{
+	box-shadow: inset 2px -2px 5px 0 rgb(255 255 255);
+}
+
+.board-left .cell-anchor{
+	box-shadow: inset -2px -2px 5px 0 rgb(255 255 255);
+}
+
+.board-bottom .cell-anchor{
+	box-shadow: inset -2px 2px 5px 0 rgb(255 255 255);
+}
+
+.board-top .cell-anchor{
+	box-shadow: inset 2px 2px 5px 0 rgb(255 255 255);
+}
+
+.cell-name {
+	position: absolute;
+    bottom: 50%;
+    left: 50%;
+    text-align: center;
+    width: 70%;
+    transform: translate(-50%, 50%);
+    font-size: smaller;
+}
+
+.board-top .cell-name{
+	bottom: unset;
+    left: unset;
+    top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: 0% 100%;
+    transform: rotateZ(-90deg) translateY(105%) translateX(-48%);
+    width: 165%;
+    height: 46%;
+    white-space: pre-wrap;
+	text-overflow: ellipsis;
+}
+
+.board-bottom .cell-name{
+	bottom: unset;
+    left: unset;
+    top: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: 0% 100%;
+    transform: rotateZ(-90deg) translateY(104%) translateX(-61%);
+    width: 165%;
+    height: 46%;
+    white-space: pre-wrap;
+	text-overflow: ellipsis;
+}
+
+.cell-position-holder {
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+
+    align-content: baseline;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.board-left .cell-position-holder, .board-right .cell-position-holder{
+	flex-direction: column;
+}
+
+.cell-position {
+	height: calc(100vh / 43);
+    width: calc(100% / 4);
+    position: relative;
+	top: 0px;
+	left: 0px;
+}
+
+.board-left .cell-position{
+	top: 0px;
+    height: 100%;
+    width: calc(100vh / 43);
+    left: 2px;
+}
+
+.board-right .cell-position{
+	top: 0px;
+    height: 100%;
+    width: calc(100vh / 43);
+    right: 2px;
+	left:unset;
+}
+
+.board
+
+.cell-owner {
+	background-size: cover;
+	display: none;
+	position: absolute;
+}
+
+.board-top .cell-owner {
+	background-image: url("img/hori-bar.png");
+	height: 15px;
+    position: absolute;
+    top: calc(100% - 15px);
+    left: 0px;
+    width: 100%;
+
+}
+
+.board-bottom .cell-owner {
+	background-image: url("img/hori-bar.png");
+	height: 15px;
+	position: absolute;
+    top: calc(100% - 17px);
+    left: 0px;
+    width: 100%;
+}
+
+.board-left .cell-owner {
+	background-image: url("img/vert-bar.png");
+	height: 100%;
+	position: absolute;
+    top: 0px;
+    left: 4px;
+    width: 15px;
+}
+
+.board-right .cell-owner {
+	background-image: url("img/vert-bar.png");
+	height: 100%;
+	position: absolute;
+    top: 0px;
+    left: calc(100% - 17px);
+    width: 15px;
+
+}
