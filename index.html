@@ -16,7 +16,8 @@
 </head>
 
 <body>
-	<div id="bg_big"></div>
+	<div id="bg_setup"></div>
+	<div id="bg_game"></div>
 	<div id="popupbackground"></div>
 	<div id="popupwrap">
 		<div id="popup">
@@ -231,9 +232,9 @@
 					</td>
 				</tr>
 				<tr id="moneybarrowbutton">
-					<td class="moneybararrowcell">&nbsp;</td>
-					<td style="border: none;">
-						<input type="button" id="viewstats" value="Verificar Situação" title="Mostra uma pop-up com uma lista das propriedades de cada jogador." />
+					<!--td class="moneybararrowcell">&nbsp;</td-->
+					<td colspan="2" style="border: none;">
+						<input type="button" id="viewstats" class="btn btn-primary btn-sm mt-2 w-100" value="Verificar Situação" title="Mostra uma pop-up com uma lista das propriedades de cada jogador." />
 					</td>
 				</tr>
 			</table>
@@ -241,17 +242,19 @@
 	</div>
 
 	<div id="setup">
-		<div style="margin-bottom: 20px;">
-			Escolha o número de jogadores: 
-			<select id="playernumber" title="Selecione a quantidade de jogadores que irão participar">
-				<option selected="selected">2</option>
-				<option>3</option>
-				<option>4</option>
-				<option>5</option>
-				<option>6</option>
-				<option>7</option>
-				<option>8</option>
-			</select>
+		<div class="row" style="margin-bottom: 20px;">
+			<div class="col-8 d-flex">
+				<span class="text-nowrap mr-3">Escolha o número de jogadores:</span> 
+				<select class="form-control form-control-sm" id="playernumber" title="Selecione a quantidade de jogadores que irão participar">
+					<option selected="selected">2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+					<option>6</option>
+					<option>7</option>
+					<option>8</option>
+				</select>
+			</div>
 		</div>
 
 		<div id="player1input" class="player-input input-group input-group-sm flex-nowrap mb-2">
@@ -499,7 +502,7 @@
 			</tr><tr>
 				<td colspan="2" style="border: none">
 					<div style="padding-top: 8px;">
-						<input type="button" id="nextbutton" title="Jogue os dados e mova seu personagem de acordo com o valor." value="Jogar Dado"/>
+						<input class="btn btn-primary btn-sm" type="button" id="nextbutton" title="Jogue os dados e mova seu personagem de acordo com o valor." value="Jogar Dado"/>
 						<input type="button" id="resignbutton" title="Se você não consegue pagar seus débitos, então você deve desistir do jogo." value="Renunciar" onclick="game.resign();" />
 					</div>
 				</td>
@@ -509,7 +512,7 @@
 
 	<div id="trade">
 		<table style="border-spacing: 3px;">
-			<tr>
+			<tr class="d-flex mt-3">
 				<td class="trade-cell">
 					<div id="trade-leftp-name"></div>
 				</td>
@@ -517,24 +520,24 @@
 					<div id="trade-rightp-name"></div>
 				</td>
 			</tr>
-			<tr>
-				<td class="trade-cell">
-					R$&nbsp;<input id="trade-leftp-money" value="0" title="Insira o valor para trocar com o outro jogador." />
+			<tr class="d-flex mt-3">
+				<td class="trade-cell d-inline-flex align-items-center">
+					R$&nbsp;<input class="form-control" id="trade-leftp-money" value="0" title="Insira o valor para trocar com o outro jogador." />
 				</td>
-				<td class="trade-cell">
-					R$&nbsp;<input id="trade-rightp-money" value="0" title="Insira o valor para trocar com o outro jogador." />
+				<td class="trade-cell d-inline-flex align-items-center">
+					R$&nbsp;<input class="form-control" id="trade-rightp-money" value="0" title="Insira o valor para trocar com o outro jogador." />
 				</td>
 			</tr>
-			<tr>
+			<tr class="d-block mt-3">
 				<td id="trade-leftp-property" class="trade-cell"></td>
 				<td id="trade-rightp-property" class="trade-cell"></td>
 			</tr>
-			<tr>
-				<td colspan="2" class="trade-cell">
-					<input type="button" id="proposetradebutton" value="Propor Negócio" onclick="game.proposeTrade();" title="Realiza a negociação com o dinheiro e as propriedades selecionadas." />
-					<input type="button" id="canceltradebutton" value="Cancelar Negócio" onclick='game.cancelTrade();' title="Cancelar a negociação." />
-					<input type="button" id="accepttradebutton" value="Aceitar Negócio" onclick="game.acceptTrade();" title="Aceita a proposta de negociação." />
-					<input type="button" id="rejecttradebutton" value="Rejeitar Negócio" onclick='game.cancelTrade();' title="Rejeita a proposta de negociação." />
+			<tr class="d-block mt-3">
+				<td colspan="2" class="trade-cell w-100" style="display: inline-table;">
+					<input type="button" class="btn btn-primary btn-sm mt-2 mr-2 ml-2 mb-2" id="proposetradebutton" value="Propor Negócio" onclick="game.proposeTrade();" title="Realiza a negociação com o dinheiro e as propriedades selecionadas." />
+					<input type="button" class="btn btn-primary btn-sm mt-2 mr-2 ml-2 mb-2" id="canceltradebutton" value="Cancelar Negócio" onclick='game.cancelTrade();' title="Cancelar a negociação." />
+					<input type="button" class="btn btn-primary btn-sm mt-2 mr-2 ml-2 mb-2" id="accepttradebutton" value="Aceitar Negócio" onclick="game.acceptTrade();" title="Aceita a proposta de negociação." />
+					<input type="button" class="btn btn-primary btn-sm mt-2 mr-2 ml-2 mb-2" id="rejecttradebutton" value="Rejeitar Negócio" onclick='game.cancelTrade();' title="Rejeita a proposta de negociação." />
 				</td>
 			</tr>
 		</table>

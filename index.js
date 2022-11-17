@@ -99,7 +99,7 @@ function Game() {
 			currentbidder -= pcount;
 		}
 
-		popup("<div style='font-weight: bold; font-size: 16px; margin-bottom: 10px;'>Leilão <span id='propertyname'></span></div><div>Oferta mais alta R$<span id='highestbid'></span> (<span id='highestbidder'></span>)</div><div><span id='currentbidder'></span>, é a sua vez de ofertar.</div<div><input id='bid' title='Entre com uma quantia para ofertar por " + s.name + ".' style='width: 291px;' /></div><div><input type='button' value='Oferta' onclick='game.auctionBid();' title='Informe sua oferta.' /><input type='button' value='Passar' title='Desiste de ofertar dessa vez.' onclick='game.auctionPass();' /><input type='button' value='Sair do Leião' title='Para de  ofertar por " + s.name + " altogether.' onclick='if (confirm(\"Tem certeza de que deseja parar de licitar esta propriedade?\")) game.auctionExit();' /></div>", "blank");
+		popup("<div style='font-weight: bold; font-size: 16px; margin-bottom: 10px;'>Leilão <span id='propertyname'></span></div><div>Oferta mais alta R$<span id='highestbid'></span> (<span id='highestbidder'></span>)</div><div><span id='currentbidder'></span>, é a sua vez de ofertar.</div<div><div class='d-flex align-items-center justify-content-center'><input class='form-control mt-2 mb-2' id='bid' title='Entre com uma quantia para ofertar por " + s.name + ".' style='width: 291px;' /></div></div><div><input type='button' value='Oferta' onclick='game.auctionBid();' title='Informe sua oferta.' class='btn btn-primary btn-sm mr-1' /><input type='button' value='Passar' title='Desiste de ofertar dessa vez.' onclick='game.auctionPass();' class='btn btn-primary btn-sm mr-1' /><input type='button' value='Sair do Leião' title='Para de  ofertar por " + s.name + " altogether.' onclick='if (confirm(\"Tem certeza de que deseja parar de licitar esta propriedade?\")) game.auctionExit();' class='btn btn-primary btn-sm' /></div>", "blank");
 
 		document.getElementById("propertyname").innerHTML = "<a href='javascript:void(0);' onmouseover='showdeed(" + auctionproperty + ");' onmouseout='hidedeed();' class='statscellcolor'>" + s.name + "</a>";
 		document.getElementById("highestbid").innerHTML = "0";
@@ -1202,7 +1202,7 @@ function popup(HTML, action, option) {
 
 	// Yes/No
 	if (option === "yes/no") {
-		document.getElementById("popuptext").innerHTML += "<div><input type=\"button\" value=\"Yes\" id=\"popupyes\" /><input type=\"button\" value=\"No\" id=\"popupno\" /></div>";
+		document.getElementById("popuptext").innerHTML += "<div><input type=\"button\" value=\"Yes\" id=\"popupyes\" class=\"btn btn-primary mr-2 ml-2 mt-2 mb-2\" /><input type=\"button\" value=\"No\" id=\"popupno\" class=\"btn btn-primary mr-2 ml-2 mt-2 mb-2\" /></div>";
 
 		$("#popupyes, #popupno").on("click", function() {
 			$("#popupwrap").hide();
@@ -1213,7 +1213,7 @@ function popup(HTML, action, option) {
 
 	// Ok
 	} else if (option !== "blank") {
-		$("#popuptext").append("<div><input type='button' value='OK' id='popupclose' /></div>");
+		$("#popuptext").append("<div><input type='button' value='OK' id='popupclose' class='btn btn-primary btn-sm mt-2' /></div>");
 		$("#popupclose").focus();
 
 		$("#popupclose").on("click", function() {
@@ -2250,7 +2250,7 @@ function land(increasedRent) {
 				buy();
 			}
 		} else {
-			document.getElementById("landed").innerHTML = "<div>Você caiu em <a href='javascript:void(0);' onmouseover='showdeed(" + p.position + ");' onmouseout='hidedeed();' class='statscellcolor'>" + s.name + "</a>.<input type='button' onclick='buy();' value='Comprar (R$" + s.price + ")' title='Comprar " + s.name + " por " + s.pricetext + ".'/></div>";
+			document.getElementById("landed").innerHTML = "<div>Você caiu em <a href='javascript:void(0);' onmouseover='showdeed(" + p.position + ");' onmouseout='hidedeed();' class='statscellcolor'>" + s.name + "</a>.<input type='button' onclick='buy();' value='Comprar (R$" + s.price + ")' title='Comprar " + s.name + " por " + s.pricetext + ".' class='btn btn-primary btn-sm'/></div>";
 		}
 
 
@@ -2514,10 +2514,10 @@ function play() {
 
 	if (p.jail) {
 		$("#landed").show();
-		document.getElementById("landed").innerHTML = "Você está na cadeia.<input type='button' title='Pague R$50 de mula e sai da cadeia agora.' value='Pague R$ 50 de multa' onclick='payfifty();' />";
+		document.getElementById("landed").innerHTML = "Você está na cadeia.<input type='button' title='Pague R$50 de mula e sai da cadeia agora.' value='Pague R$ 50 de multa' onclick='payfifty();' class='btn btn-primary btn-sm' />";
 
 		if (p.communityChestJailCard || p.chanceJailCard) {
-			document.getElementById("landed").innerHTML += "<input type='button' id='gojfbutton' title='Use &quot;Get Out of Jail Free&quot; card.' onclick='useJailCard();' value='Use Card' />";
+			document.getElementById("landed").innerHTML += "<input type='button' id='gojfbutton' title='Use &quot;Get Out of Jail Free&quot; card.' onclick='useJailCard();' value='Use Card' class='btn btn-primary btn-sm' />";
 		}
 
 		document.getElementById("nextbutton").title = "Joga os dados. Se você acertar dados iguais, você sairá da cadeia.";
@@ -2555,6 +2555,7 @@ function play() {
 }
 
 function setup() {
+	document.querySelector("body").classList.add("jogo-iniciado");
 	pcount = parseInt(document.getElementById("playernumber").value, 10);
 
 	var playerArray = new Array(pcount);

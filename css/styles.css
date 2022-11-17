@@ -2,22 +2,107 @@ body {
 	/*background: #FFFFFF;*/
 	margin: 0px;
 	min-width: 1075px;
-	/*background-image: url('/img/bg_img.jpg');*/
-	/*background-repeat: no-repeat;*/
+	/*background-image: url('/img/bg_img.jpg');
+	background-repeat: no-repeat;*/
 	background-image: linear-gradient(to right bottom, #ffffff, #d8d5da, #b6abb3, #96838b, #785d62, #664a4d, #553839, #432725, #3b2220, #341c1b, #2c1716, #251210);
 }
+
+/*buttons*/
+.btn-primary{
+	background-color: #34495E;
+	border: solid 1px #34495E;
+}
+
+.btn-primary:hover{
+	background-color:#553839;
+	border: solid 1px #553839;
+
+	animation: glow 1s ease-in-out infinite alternate;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.show>.btn-primary.dropdown-toggle:focus{
+	box-shadow: 0 0 0 0.2rem rgba(85, 56, 57, .5);
+
+}
+
+.btn-primary.focus, .btn-primary:focus {
+    color: #fff;
+    background-color: #553839;
+    border-color: #553839;
+    box-shadow: 0 0 0 0.2rem rgba(85, 56, 57, .5);
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #553839;
+    border-color: #553839;
+}
+
+.form-control:focus {
+    color: #553839;
+    background-color: #fff;
+    border-color: #553839;
+    box-shadow: 0 0 0 0.2rem rgba(85, 56, 57, .3);
+}
+
+#nextbutton.btn-primary:active,
+#nextbutton.btn-primary:focus,
+#nextbutton.btn-primary:active:focus{
+	animation: glow 1s ease-in-out infinite alternate;
+}
+
+
+@keyframes glow {
+	from {
+	  text-shadow: 0 0 1px #553839, 0 0 3px #553839;
+	}
+	
+	to {
+	  text-shadow: 0 0 2px #ffffff, 0 0 5px #ff4da6;
+	}
+}
 /*fundo grande*/
-#bg_big{
+#bg_setup{
 	position: fixed;
 	right: 0px;
 	top:0px;
 	height: 100vh;
 	width: 50vw;
 	z-index: -100;
-	background-image: url('img/monopoly-man.png');
+	background-image: url('../img/monopoly-man.png');
 	background-repeat: no-repeat;
 	pointer-events: none;
 	opacity: .2;
+	transition: opacity .5s;
+}
+
+#bg_game{
+	position: fixed;
+    left: 0px;
+    bottom: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+    background-color: white;
+    background-image: url(../img/bg_img.jpg);
+    background-position: left bottom;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0;
+}
+
+.jogo-iniciado #bg_setup{
+	opacity: 0;
+	transition: opacity .5s;
+}
+
+.jogo-iniciado #bg_game{
+	opacity: .2;
+    transition: opacity .5s;
 }
 
 /*show/hide flexbox*/
@@ -31,7 +116,7 @@ div.showFlex{
 
 /*pannel effects*/
 /*generic background1*/
-#setup, #board, .enlarge, #control{
+#setup, #board, .enlarge, #control, #moneybar, .statscell, #stats, #popup, #trade{
 background: rgb(255,255,255);
 background: -moz-linear-gradient(-45deg,  rgba(255,255,255,1) 0%, rgba(255,243,229,1) 100%);
 background: -webkit-linear-gradient(-45deg,  rgba(255,255,255,1) 0%,rgba(255,243,229,1) 100%);
@@ -41,7 +126,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 
 /*generic shadows*/
-#board, .enlarge, #setup, #control{
+#board, .enlarge, #setup, #control, #moneybar, .statscell, #stats, #quickstats, #popup, #trade{
 	-webkit-box-shadow: 1px 1px 5px 0 rgba(0,0,0,.3);
 	box-shadow: 1px 1px 5px 0 rgba(0,0,0,.3);
 }
@@ -66,35 +151,52 @@ td {
     transform: translate(-50%, -50%);
 }
 
+#setup:before{
+	content: "";
+    position: absolute;
+    top: -98px;
+    left: 0px;
+    width: 100%;
+    height: 108px;
+    background-image: url(../img/monopoly-setup.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
 .player-input{
 	display: flex;
 	justify-content: space-between;
 }
 
 #moneybar {
-	float: right;
-	border: 0px solid black;
-	background-color: white;
-	margin: 15px;
-	border-radius: 5px;
-	display: none;
-	z-index: 14;
-	position: relative;
-	cursor: default;
-	-webkit-user-select: none;
-	user-select: none;
+	/*float: right; */
+    border: 0px solid black;
+    /* background-color: white; */
+    /* margin: 15px; */
+    border-radius: 5px;
+    display: none;
+    z-index: 14;
+    position: relative;
+    cursor: default;
+    -webkit-user-select: none;
+    user-select: none;
+    padding: .5rem;
+	width: 100%;
 }
 
 #moneybar table {
-	font-weight: bold;
-	border-spacing: 1px;
+	width: 100%;
+    font-weight: bold;
+    border-spacing: 2px;
+    border-collapse: separate;
 }
 
 #moneybarwrap {
 	position: absolute;
-	min-width: 135px;
-	top: 0px;
-	right: 0px;
+	min-width: 200px;
+	top: 1rem;
+	right: 1rem;
 	-webkit-user-select: none;
 	user-select: none;
 }
@@ -160,7 +262,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 #board:after{
 	content: "";
-    background-image: url('img/board_bg.png');
+    background-image: url('../img/board_bg.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
@@ -188,7 +290,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 #control {
 	position: absolute;
     z-index: 9;
-    bottom: 4vh;
+    bottom: 1rem;
     right: 1rem;
     /* left: 250px; */
     padding: 10px;
@@ -200,10 +302,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	font-size: 12px;
 	font-weight: bold;
 	font-family: arial, sans-serif;
-	border: 2px solid blue;
-	margin: 5px;
+	margin-left: 3px;
 	padding: 3px;
 	width: 80px;
+	background-color: white;
+	border-radius: 5px;
 }
 
 #pname {
@@ -212,24 +315,29 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 #landed {
 	padding: 3px;
-	border: 1px solid gray;
-	border-top: none;
-	width: 302px;
-
-	margin: 0px;
-	text-align: center;
+    border: 1px solid gray;
+    border-top: none;
+    width: 300px;
+    margin: 0px;
+    text-align: center;
 }
 
 #alert {
-	width: 307px;
-	height: 92px;
-	margin: 0px;
-	padding-left: 1px;
-	border: 1px solid gray;
-	font-family: Consolas, "Courier New", monospace;
-	font-size: 13px;
-	background-color: #FFFFFF;
-	overflow-y: scroll;
+	width: 300px;
+    height: 76px;
+    margin: 0px;
+    padding-left: 1px;
+    border: 1px solid gray;
+    line-height: 16px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    font-size: 13px;
+    background-color: #FFFFFF;
+    overflow-y: scroll;
+}
+
+#alert > div{
+	margin-top: 5px;
 }
 
 #manage {
@@ -288,23 +396,27 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 
 #trade {
-	border: 2px solid black;
+	
 	display: none;
 	width: 630px;
 	margin: 15px auto;
 	background-color: white;
 	border-radius: 8px;
-	padding: 2px;
+	padding: 1rem;
 	z-index: 14;
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 #trade-leftp-name {
-	font-size: 13px;
+	font-size: 16px;
 	font-weight: bold;
 }
 
 #trade-leftp-name option {
-	font-size: 13px;
+	font-size: 16px;
 	font-weight: normal;
 }
 
@@ -346,14 +458,12 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 }
 
 #menutable {
-	padding: 0px;
 	text-align: left;
 	font-family: arial, sans-serif;
 	color: white;
 	font-weight: bold;
 	width: 100%;
 	margin: 0px;
-	background-color: #305BC9;
 	overflow: hidden;
 }
 
@@ -384,15 +494,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 
 
 #popup {
-	width: 300px;
-	min-width: 300px;
+	width: 400px;
+	min-width: 400px;
 	font-family: Arial, sans-serif;
 	font-size: 14px;
 	padding: 10px;
 	text-align: center;
 	word-wrap: break-word;
 	line-height: 1.5;
-	border: 2px solid black;
 	border-radius: 10px;
 	background-color: white;
 	display: block;
@@ -400,6 +509,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	margin: auto;
 	-webkit-user-select: none;
 	user-select: none;
+}
+
+#popup div:last-of-type{
+	margin-bottom: 7px;
 }
 
 #popupwrap {
@@ -468,7 +581,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	text-align: center;
 	word-wrap: break-word;
 	line-height: 1.5;
-	border: 2px solid black;
 	border-radius: 10px;
 	background-color: white;
 	display: block;
@@ -492,9 +604,10 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	user-select: none;
 }
 
-#statstext {
+#statstext table {
 	overflow: hidden;
 	min-height: 70px;
+	border-collapse: separate;
 }
 
 #statsclose {
@@ -616,13 +729,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', end
 	z-index: 0;
 }
 
-
-
 .menu-item {
-	padding: 0px;
 	border-collapse: collapse;
 	border: none;
-	width: 90px;
 	max-width: 90px;
 	overflow: hidden;
 }
@@ -800,12 +909,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e000000', e
 }
 
 .moneybarcell {
-	width: 83px;
 	min-width: 83px;
+	text-align: right;
+	padding-right: 1rem;
+	background: white;
 }
 
 .moneybararrowcell {
-	background: white;
+	/*background: white;*/
 	width: 30px;
 	border: none;
 	text-align: right;
@@ -816,6 +927,33 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e000000', e
 	height: 30px;
 	width: 30px;
 }
+
+#p1moneybar div:first-of-type,
+#p2moneybar div:first-of-type,
+#p3moneybar div:first-of-type,
+#p4moneybar div:first-of-type,
+#p5moneybar div:first-of-type,
+#p6moneybar div:first-of-type,
+#p7moneybar div:first-of-type,
+#p8moneybar div:first-of-type{
+	font-weight: normal;
+	color:#212529;
+	font-size: .75rem;
+}
+
+#p1moneybar div:last-of-type,
+#p2moneybar div:last-of-type,
+#p3moneybar div:last-of-type,
+#p4moneybar div:last-of-type,
+#p5moneybar div:last-of-type,
+#p6moneybar div:last-of-type,
+#p7moneybar div:last-of-type,
+#p8moneybar div:last-of-type{
+	font-weight: bold;
+	color:#212529;
+	font-size: 1.06rem;
+}
+
 .propertycellcheckbox {
 	width: 20px;
 	height: 20px;
@@ -851,9 +989,26 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e000000', e
 
 .statscellcolor {
 	padding: 0px;
-	width: 22px;
-	height: 20px;
 	border: none;
+}
+
+#stats tr{
+	display: flex;
+    align-items: flex-start;
+}
+
+#stats .statscellcolor{
+	display: block;
+    width: 22px;
+    height: 20px;
+    margin: 2px;
+}
+
+#stats .statscellname{
+	display: block;
+    height: unset;
+	padding-right: 1rem;
+
 }
 
 .statscellname {
@@ -867,6 +1022,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e000000', e
 .statsplayername {
 	font-weight: bold;
 	font-size: 24px;
+	margin-bottom: 8px;
 }
 
 .statscell {
@@ -875,6 +1031,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e000000', e
 	vertical-align: top;
 	width: 202px;
 	min-width: 115px;
+	border-radius: 4px;
+	margin: 3px;
 }
 
 .trade-cell {
@@ -1002,7 +1160,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e000000', e
 }
 
 .board-top .cell-owner {
-	background-image: url("img/hori-bar.png");
+	background-image: url("../img/hori-bar.png");
 	height: 15px;
     position: absolute;
     top: calc(100% - 15px);
@@ -1012,7 +1170,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e000000', e
 }
 
 .board-bottom .cell-owner {
-	background-image: url("img/hori-bar.png");
+	background-image: url("../img/hori-bar.png");
 	height: 15px;
 	position: absolute;
     top: calc(100% - 17px);
@@ -1021,7 +1179,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e000000', e
 }
 
 .board-left .cell-owner {
-	background-image: url("img/vert-bar.png");
+	background-image: url("../img/vert-bar.png");
 	height: 100%;
 	position: absolute;
     top: 0px;
@@ -1030,7 +1188,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2e000000', e
 }
 
 .board-right .cell-owner {
-	background-image: url("img/vert-bar.png");
+	background-image: url("../img/vert-bar.png");
 	height: 100%;
 	position: absolute;
     top: 0px;

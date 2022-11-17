@@ -54,7 +54,7 @@ function citytax() {
 		buttonAonclick = 'hide("popupbackground"); hide("popupwrap"); var p=player[turn]; addalert(p.name+" pagou R$ 200 por parar no Imposto Municipal."); p.pay(200, 0);';
 		buttonBonclick = ' hide("popupbackground"); hide("popupwrap"); var p=player[turn]; var cost=p.money; for(var i=0; i<40; i++){sq=quadro[i]; if(sq.owner==turn) { if(sq.mortgage) { cost+=sq.price*0.5; } else { cost+=sq.price; } cost+=(sq.house*sq.houseprice); } } cost*=0.1; cost=Math.round(cost); addalert(p.name+" paid $"+cost+" por para no Imposto Municipal."); p.pay(cost,0);';
 
-		popup("Você parou em 'Importo Municipal'. Você tem que pagar R$ 200 ou 10% do valor total.<div><input type='button' value='Pagar R$200' onclick='" + buttonAonclick + "' /><input type='button' value='Pagar 10%' onclick='" + buttonBonclick + "' /></div>", false);
+		popup("Você parou em 'Imposto Municipal'. Você tem que pagar R$ 200 ou 10% do valor total.<div class='d-flex w-50 justify-content-between align-items-center mt-2 mb-2' style='margin: 0 auto;'><input type='button' class='btn btn-primary btn-sm' value='Pagar R$200' onclick='" + buttonAonclick + "' /><input type='button' class='btn btn-primary btn-sm' value='Pagar 10%' onclick='" + buttonBonclick + "' /></div>", false);
 	} else {
 		addalert(p.name + " pagou R$ 200 por parar em 'Imposto Municipal'.");
 		p.pay(200, 0);
