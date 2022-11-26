@@ -24,5 +24,5 @@ JAVASCRIPT; <br />
 
 Bruno Cipriani <br />
 Bruno Peçanha <br />
-Lucas  <br />
-Matheus <br />
+Lucas Fernandes  <br />
+Matheus Custodio <br />
